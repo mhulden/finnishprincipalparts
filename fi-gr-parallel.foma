@@ -1,0 +1,70 @@
+# Grammar that allows for subslots in certain case forms
+# (PARTSG, GENPL, PARTPL, ILLPL)
+
+# The subslots are as follows:
+# PARTSG1: -V, PARTSG2: -tA
+# GENPL1: -ien, GENPL2: -iden, GENPL3: -iten
+# PARTPL1: -Ia, PARTPL2: -itA
+# ILLPL1: -VVn/-siin, ILLPL2: -(i)hVn [default/with consonant gradation], ILLPL3: -(i)hVn (but no CG)
+
+def IDS   1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48;
+def LEX {valo}|{palvelu}|{valtio}|{laatikko}|{risti}|{paperi}|{ovi}|{nalle}|{kala}|{koira}|{omena}|{kulkija}|{katiska}|{solakka}|{korkea}|{vanhempi}|{vapaa}|{maa}|{suo}|{filee}|{rosé}|{parfait}|{tiili}|{uni}|{toimi}|{pieni}|{käsi}|{kynsi}|{lapsi}|{veitsi}|{kaksi}|{sisar}|{kytkin}|{onneton}|{lämmin}|{sisin}|{vasen}|{nainen}|{vastaus}|{kalleus}|{vieras}|{mies}|{ohut}|{kevät}|{kahdeksas}|{tuhat}|{kuollut}|{hame};
+
+def TAGS  GENSG|PARTSG1|PARTSG2|NOMSG|ILLSG|NOMPL|GENPL1|GENPL2|GENPL3|PARTPL1|PARTPL2|ILLPL1|ILLPL2|ILLPL3 ;
+def SEP   %|:0 ;
+def NT    [? - TAGS - IDS - "|"];
+def P     SEP NT+ ; # Goes at beginning of each entry
+
+def Gr 1:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:PARTSG2) (P 0:{on} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:{jen} 0:GENPL1) (P 0:GENPL2) (P  0:GENPL3) (P 0:{ja} 0:PARTPL1) (P 0:PARTPL2) (P 0:ILLPL1) (P 0:{ihin} 0:ILLPL2) (P 0:ILLPL3) |
+       2:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:PARTSG2) (P 0:{un} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:{jen} 0:GENPL1) (P 0:{iden} 0:GENPL2) (P 0:{itten} 0:GENPL3) (P 0:{ja} 0:PARTPL1) (P 0:{ita} 0:PARTPL2) (P 0:ILLPL1) (P 0:{ihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   3:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P 0:{on} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:GENPL1) (P 0:{iden} 0:GENPL2) (P 0:{itten} 0:GENPL3) (P 0:PARTPL1) (P 0:{ita} 0:PARTPL2) (P 0:ILLPL1) (P 0:{ihin} 0:ILLPL2) (P 0:ILLPL3) |
+       4:0 (P 0:NOMSG) (P k:0 o 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:PARTSG2) (P 0:{on} 0:ILLSG) (P k:0 o 0:t 0:NOMPL) (P 0:{jen} 0:GENPL1) (P k:0 o 0:{iden} 0:GENPL2) (P k:0 o 0:{itten} 0:GENPL3) (P 0:{ja} 0:PARTPL1) (P k:0 o 0:{ita} 0:PARTPL2) (P 0:ILLPL1) (P k:0 o 0:{ihin} 0:ILLPL2) (P o 0:{ihin} 0:ILLPL3)|
+	   5:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:ä 0:PARTSG1) (P 0:PARTSG2) (P 0:{in} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P i:{ejä} 0:PARTPL1) (P 0:PARTPL2) (P 0:ILLPL1) (P i:{eihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   6:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:PARTSG2) (P 0:{in} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:{en} 0:GENPL1) (P i:{eiden} 0:GENPL2) (P i:{eitten} 0:GENPL3) (P i:{eja} 0:PARTPL1) (P i:{eita} 0:PARTPL2) (P 0:ILLPL1) (P i:{eihin} 0:ILLPL2) (P 0:ILLPL3) |
+       7:0 (P i 0:NOMSG) (P i:{en} 0:GENSG) (P i:{ea} 0:PARTSG1) (P 0:PARTSG2) (P i:{een} 0:ILLSG) (P i:{et} 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P 0:{a} 0:PARTPL1) (P 0:PARTPL2) (P 0:{in} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   8:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:PARTSG2) (P 0:{en} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:{jen} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P 0:{ja} 0:PARTPL1) (P 0:PARTPL2) (P 0:ILLPL1) (P 0:{ihin} 0:ILLPL2) (P 0:ILLPL3) |
+       9:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:PARTSG2) (P 0:{an} 0:ILLSG) (P 0:t 0:NOMPL) (P a:{ojen} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P a:{oja} 0:PARTPL1) (P 0:PARTPL2) (P 0:ILLPL1) (P a:{oihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   10:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:PARTSG2) (P 0:{an} 0:ILLSG) (P 0:t 0:NOMPL) (P a:{ien} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P a:{ia} 0:PARTPL1) (P 0:PARTPL2) (P a:{iin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+       11:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:PARTSG2) (P 0:{an} 0:ILLSG) (P 0:t 0:NOMPL) (P a:{ojen} 0:GENPL1) (P a:{oiden} 0:GENPL2) (P a:{oitten} 0:GENPL3) (P a:{ia} 0:PARTPL1) (P a:{oita} 0:PARTPL2) (P a:{iin} 0:ILLPL1) (P a:{oihin} 0:ILLPL2) (P 0:ILLPL3) | 
+	   12:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:PARTSG2) (P 0:{an} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:GENPL1) (P a:{oiden} 0:GENPL2) (P a:{oitten} 0:GENPL3) (P 0:PARTPL1) (P a:{oita} 0:PARTPL2) (P 0:ILLPL1) (P a:{oihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   13:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:PARTSG2) (P 0:{an} 0:ILLSG) (P 0:t 0:NOMPL) (P a:{ojen} 0:GENPL1) (P a:{oiden} 0:GENPL2) (P a:{oitten} 0:GENPL3) (P a:{oja} 0:PARTPL1) (P a:{oita} 0:PARTPL2) (P 0:ILLPL1) (P a:{oihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   14:0 (P 0:NOMSG) (P k:0 a 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:PARTSG2) (P 0:{an} 0:ILLSG) (P k:0 a 0:t 0:NOMPL) (P a:{ojen} 0:GENPL1) (P k:0 a:{oiden} 0:GENPL2) (P k:0 a:{oitten} 0:GENPL3) (P a:{oja} 0:PARTPL1) (P k:0 a:{oita} 0:PARTPL2) (P 0:ILLPL1) (P k:0 a:{oihin} 0:ILLPL2) (P a:{oihin} 0:ILLPL3) |
+	   15:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:a 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P 0:{an} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:GENPL1) (P a:{iden} 0:GENPL2) (P a:{itten} 0:GENPL3) (P 0:PARTPL1) (P a:{ita} 0:PARTPL2) (P a:{isiin} 0:ILLPL1) (P a:{ihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   16:0 (P 0:NOMSG) (P {pi}:{man} 0:GENSG) (P {i}:{aa} 0:PARTSG1) (P 0:PARTSG2) (P i:{aan} 0:ILLSG) (P {pi}:{mat} 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P 0:a 0:PARTPL1) (P 0:PARTPL2) (P 0:{in} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   17:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P 0:{seen} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:GENPL1) (P a:{iden} 0:GENPL2) (P a:{itten} 0:GENPL3) (P 0:PARTPL1) (P a:{ita} 0:PARTPL2) (P a:{isiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+       18:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P 0:{han} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:GENPL1) (P a:{iden} 0:GENPL2) (P a:{itten} 0:GENPL3) (P 0:PARTPL1) (P a:{ita} 0:PARTPL2) (P 0:ILLPL1) (P a:{ihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   19:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P 0:{hon} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:GENPL1) (P {uo}:{oiden} 0:GENPL2) (P {uo}:{oitten} 0:GENPL3) (P 0:PARTPL1) (P {uo}:{oita} 0:PARTPL2) (P 0:ILLPL1) (P {uo}:{oihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   20:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:PARTSG1) (P 0:{tä} 0:PARTSG2) (P 0:{seen} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:GENPL1) (P e:{iden} 0:GENPL2) (P e:{itten} 0:GENPL3) (P 0:PARTPL1) (P e:{itä} 0:PARTPL2) (P e:{isiin} 0:ILLPL1) (P e:{ihin} 0:ILLPL2) (P 0:ILLPL3) |
+       21:0 (P 0:NOMSG) (P 0:n 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P 0:{hen} 0:ILLSG) (P 0:t 0:NOMPL) (P 0:GENPL1) (P 0:{iden} 0:GENPL2) (P  0:GENPL3) (P 0:PARTPL1) (P 0:{ita} 0:PARTPL2) (P 0:ILLPL1) (P 0:{ihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   22:0 (P 0:NOMSG) (P 0:{'n} 0:GENSG) (P 0:PARTSG1) (P 0:{'ta} 0:PARTSG2) (P 0:{'hen} 0:ILLSG) (P 0:{'t} 0:NOMPL) (P 0:GENPL1) (P 0:{'iden} 0:GENPL2) (P 0:GENPL3) (P 0:PARTPL1) (P 0:{'ita} 0:PARTPL2) (P 0:ILLPL1) (P 0:{'ihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   23:0 (P 0:NOMSG) (P i:{en} 0:GENSG) (P 0:PARTSG1) (P i:{tä} 0:PARTSG2) (P i:{een} 0:ILLSG) (P i:{et} 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P 0:ä 0:PARTPL1) (P 0:PARTPL2) (P 0:{in} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   24:0 (P 0:NOMSG) (P i:{en} 0:GENSG) (P 0:PARTSG1) (P i:{ta} 0:PARTSG2) (P i:{een} 0:ILLSG) (P i:{et} 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P i:{ten} 0:GENPL3) (P 0:{a} 0:PARTPL1) (P 0:PARTPL2) (P 0:{in} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   25:0 (P 0:NOMSG) (P i:{en} 0:GENSG) (P {i}:{ea} 0:PARTSG1) (P {mi}:{nta} 0:PARTSG2) (P i:{een} 0:ILLSG) (P i:{et} 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P {mi}:{nten} 0:GENPL3) (P 0:a 0:PARTPL1) (P 0:PARTPL2) (P 0:{in} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   26:0 (P 0:NOMSG) (P i:{en} 0:GENSG) (P 0:PARTSG1) (P i:{tä} 0:PARTSG2) (P i:{een} 0:ILLSG) (P i:{et} 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P i:{ten} 0:GENPL3) (P 0:ä 0:PARTPL1) (P 0:PARTPL2) (P 0:{in} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   27:0 (P 0:NOMSG) (P {si}:{den} 0:GENSG) (P 0:PARTSG1) (P {si}:{ttä} 0:PARTSG2) (P {si}:{teen} 0:ILLSG) (P {si}:{det} 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P 0:ä 0:PARTPL1) (P 0:PARTPL2) (P 0:{in} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+       28:0 (P 0:NOMSG) (P {si}:{nen} 0:GENSG) (P 0:PARTSG1) (P {si}:{ttä} 0:PARTSG2) (P {si}:{teen} 0:ILLSG) (P {si}:{net} 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P 0:ä 0:PARTPL1) (P 0:PARTPL2) (P 0:{in} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   29:0 (P 0:NOMSG) (P i:{en} 0:GENSG) (P 0:PARTSG1) (P {psi}:{sta} 0:PARTSG2) (P i:{een} 0:ILLSG) (P i:{et} 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P {psi}:{sten} 0:GENPL3) (P 0:a 0:PARTPL1) (P 0:PARTPL2) (P 0:{in} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   30:0 (P 0:NOMSG) (P i:{en} 0:GENSG) (P 0:PARTSG1) (P {tsi}:{stä} 0:PARTSG2) (P i:{een} 0:ILLSG) (P i:{et} 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P 0:ä 0:PARTPL1) (P 0:PARTPL2) (P 0:{in} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) | 
+	   31:0 (P 0:NOMSG) (P {ksi}:{hden} 0:GENSG) (P 0:PARTSG1) (P {ksi}:{hta} 0:PARTSG2) (P {ksi}:{hteen} 0:ILLSG) (P {ksi}:{hdet} 0:NOMPL) (P 0:{en} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P 0:{a} 0:PARTPL1) (P 0:PARTPL2) (P 0:{in} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   32:0 (P 0:NOMSG) (P 0:{en} 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P 0:{een} 0:ILLSG) (P 0:{et} 0:NOMPL) (P 0:{ien} 0:GENPL1) (P 0:GENPL2) (P 0:{ten} 0:GENPL3) (P 0:{ia} 0:PARTPL1) (P 0:PARTPL2) (P 0:{iin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   33:0 (P 0:NOMSG) (P n:{men} 0:GENSG) (P 0:PARTSG1) (P 0:{tä} 0:PARTSG2) (P n:{meen} 0:ILLSG) (P n:{met} 0:NOMPL) (P n:{mien} 0:GENPL1) (P 0:GENPL2) (P 0:{ten} 0:GENPL3) (P n:{miä} 0:PARTPL1) (P 0:PARTPL2) (P n:{miin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   34:0 (P 0:NOMSG) (P {on}:{toman} 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P {on}:{tomaan} 0:ILLSG) (P {on}:{tomat} 0:NOMPL) (P {on}:{tomien} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P {on}:{tomia} 0:PARTPL1) (P 0:PARTPL2) (P {on}:{tomiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   35:0 (P 0:NOMSG) (P {min}:{pimän} 0:GENSG) (P 0:PARTSG1) (P 0:{tä} 0:PARTSG2) (P {min}:{pimään} 0:ILLSG) (P {min}:{pimät} 0:NOMPL) (P {min}:{pimien} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P {min}:{pimiä} 0:PARTPL1) (P 0:PARTPL2) (P {min}:{pimiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   36:0 (P 0:NOMSG) (P n:{mmän} 0:GENSG) (P 0:PARTSG1) (P 0:{tä} 0:PARTSG2) (P n:{mpään} 0:ILLSG) (P n:{mmät} 0:NOMPL) (P n:{mpien} 0:GENPL1) (P 0:GENPL2) (P 0:{ten} 0:GENPL3) (P n:{mpiä} 0:PARTPL1) (P 0:PARTPL2) (P n:{mpiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+       37:0 (P 0:NOMSG) (P n:{mman} 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P n:{mpaan} 0:ILLSG) (P n:{mmat} 0:NOMPL) (P n:{mpien} 0:GENPL1) (P  0:GENPL2) (P 0:{ten} 0:GENPL3) (P n:{mpia} 0:PARTPL1) (P 0:PARTPL2) (P n:{mpiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   38:0 (P 0:NOMSG) (P {nen}:{sen} 0:GENSG) (P 0:PARTSG1) (P {nen}:{sta} 0:PARTSG2) (P {nen}:{seen} 0:ILLSG) (P {nen}:{set} 0:NOMPL) (P {nen}:{sien} 0:GENPL1) (P 0:GENPL2) (P {nen}:{sten} 0:GENPL3) (P {nen}:{sia} 0:PARTPL1) (P 0:PARTPL2) (P {nen}:{siin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3)|
+	   39:0 (P 0:NOMSG) (P s:{ksen} 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P s:{kseen} 0:ILLSG) (P s:{kset} 0:NOMPL) (P s:{ksien} 0:GENPL1) (P 0:GENPL2) (P 0:{ten} 0:GENPL3) (P s:{ksia} 0:PARTPL1) (P 0:PARTPL2) (P s:{ksiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   40:0 (P 0:NOMSG) (P s:{den} 0:GENSG) (P 0:PARTSG1) (P s:{tta} 0:PARTSG2) (P s:{teen} 0:ILLSG) (P s:{det} 0:NOMPL) (P s:{ksien} 0:GENPL1) (P 0:GENPL2) (P 0:GENPL3) (P s:{ksia} 0:PARTPL1) (P 0:PARTPL2) (P s:{ksiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   41:0 (P 0:NOMSG) (P s:{an} 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P s:{aseen} 0:ILLSG) (P s:{at} 0:NOMPL) (P 0:GENPL1) (P s:{iden} 0:GENPL2) (P s:{itten} 0:GENPL3) (P 0:PARTPL1) (P s:{ita} 0:PARTPL2) (P s:{isiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   42:0 (P 0:NOMSG) (P s:{hen} 0:GENSG) (P 0:PARTSG1) (P 0:{tä} 0:PARTSG2) (P s:{heen} 0:ILLSG) (P s:{het} 0:NOMPL) (P s:{hien} 0:GENPL1) (P  0:GENPL2) (P 0:{ten} 0:GENPL3) (P s:{hiä} 0:PARTPL1) (P 0:PARTPL2) (P s:{hiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   43:0 (P 0:NOMSG) (P t:{en} 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P t:{een} 0:ILLSG) (P t:{et} 0:NOMPL) (P 0:GENPL1) (P t:{iden} 0:GENPL2) (P t:{itten} 0:GENPL3) (P 0:PARTPL1) (P t:{ita} 0:PARTPL2) (P t:{isiin} 0:ILLPL1) (P t:{ihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   44:0 (P 0:NOMSG) (P t:{än} 0:GENSG) (P 0:PARTSG1) (P 0:{tä} 0:PARTSG2) (P t:{äseen} 0:ILLSG) (P t:{ät} 0:NOMPL) (P 0:GENPL1) (P t:{iden} 0:GENPL2) (P t:{itten} 0:GENPL3) (P 0:PARTPL1) (P t:{itä} 0:PARTPL2) (P t:{isiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   45:0 (P 0:NOMSG) (P s:{nnen} 0:GENSG) (P 0:PARTSG1) (P s:{tta} 0:PARTSG2) (P s:{nteen} 0:ILLSG) (P s:{nnet} 0:NOMPL) (P s:{nsien} 0:GENPL1) (P  0:GENPL2) (P 0:GENPL3) (P s:{nsia} 0:PARTPL1) (P 0:PARTPL2) (P s:{nsiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   46:0 (P 0:NOMSG) (P t:{nnen} 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P t:{nteen} 0:ILLSG) (P t:{nnet} 0:NOMPL) (P t:{nsien} 0:GENPL1) (P  0:GENPL2) (P 0:GENPL3) (P t:{nsia} 0:PARTPL1) (P 0:PARTPL2) (P t:{nsiin} 0:ILLPL1) (P 0:ILLPL2) (P 0:ILLPL3) |
+	   47:0 (P 0:NOMSG) (P {ut}:{een} 0:GENSG) (P 0:PARTSG1) (P 0:{ta} 0:PARTSG2) (P {ut}:{eeseen} 0:ILLSG) (P {ut}:{eet} 0:NOMPL) (P 0:GENPL1) (P {ut}:{eiden} 0:GENPL2) (P {ut}:{eitten} 0:GENPL3) (P 0:PARTPL1) (P {ut}:{eita} 0:PARTPL2) (P {ut}:{eisiin} 0:ILLPL1) (P {ut}:{eihin} 0:ILLPL2) (P 0:ILLPL3) |
+	   48:0 (P 0:NOMSG) (P 0:{en} 0:GENSG) (P 0:PARTSG1) (P 0:{tta} 0:PARTSG2) (P 0:{eseen} 0:ILLSG) (P 0:{et} 0:NOMPL) (P 0:GENPL1) (P 0:{iden} 0:GENPL2) (P 0:{itten} 0:GENPL3) (P 0:PARTPL1) (P 0:{ita} 0:PARTPL2 ) (P 0:{isiin} 0:ILLPL1) (P 0:{ihin} 0:ILLPL2) (P 0:ILLPL3);
+
+#regex IDS [%| LEX]* .o. Gr;
+regex IDS [%| NT+]* .o. Gr;
+
+save stack fi-gr-parallel.fomabin
