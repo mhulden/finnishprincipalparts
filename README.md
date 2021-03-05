@@ -14,7 +14,7 @@ define palvelu [2 ["|" {palvelu}]^14  .o. Gr .o. ~$["|"] .o. [[..] -> " " || [GE
 ...
 ```
 
-**Step 2:** Generate WF+TAG combinations
+**STEP 2:** Generate WF+TAG combinations
 
 Start foma using 
 ```
@@ -29,7 +29,7 @@ palveluNOMSG palvelunGENSG palveluaPARTSG1 palveluPARTSG2 palveluunILLSG palvelu
 
 Store the output in a file `FORMS`
 
-**Step 3:** Generate combinations of forms
+**STEP 3:** Generate combinations of forms
 
 Run: 
 ```
@@ -48,7 +48,7 @@ valoILLPL1valoihinILLPL2valoILLPL3
 ...
 ```
 
-**Step 4: Perform foma lookup
+**STEP 4: Perform foma lookup
 
 Run:
 ```
@@ -67,7 +67,7 @@ valoNOMSG       9|valo
 ...
 ```
 
-**Step 5: Identify principal parts
+**STEP 5: Identify principal parts
 Run
 ```
 $ python3 find_prparts.py COMBINATIONS.out 
