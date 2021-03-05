@@ -37,6 +37,7 @@ if __name__=="__main__":
     
     outputs = filter_inconsistent_sets(outputs)
     inputs, outputs = filter_insufficient_sets(inputs, outputs)
+
     inputs = reduce_sets(inputs)
     
     all_lem = set()
@@ -46,6 +47,7 @@ if __name__=="__main__":
         all_lem.add(lemma)
         paradigm_dict[i].add(lemma)
 
+    print("AFTER FILTERING %u CLASSES REMAIN." % len(all_lem))
     min_count = 1000
     min_forms = []
 
