@@ -2,7 +2,7 @@
 
 ## Running `find_prparts.py`
 
-**STEP 1:** Generate class scripts (these are used to extract WF+TAG combinations for each example lexeme from the grammar)
+**STEP 1:** Generate class scripts (these are used for extracting WF+TAG combinations for each example lexeme from the grammar)
 
 ```
 $ python3 generate_class_script.py
