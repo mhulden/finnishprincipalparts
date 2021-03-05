@@ -35,7 +35,7 @@ Run:
 ```
 $ python3 generate_combinations.py FORMS > COMBINATIONS
 ```
-The output file (which will be a fairly long file) should look like this:
+The output file (which will be fairly long) should look like this:
 ```
 valoNOMSG
 valonGENSG
