@@ -38,7 +38,8 @@ def P     SEP Alph+ ; # Goes at beginning of each entry
 def PS    SEP Alph* ; # If we already constrain the word
 
 def Back [a|o|u];
-def VH  A -> a, O -> o || .#. $Back _ .o. A -> ä, O -> ö ; # Vowel Harmony
+def Front [ö|y|ä];
+def VH  A -> a, O -> o || Back ~$Front _ .o. A -> ä, O -> ö ; # Vowel Harmony
 def VL  V -> a || a _ .o. V -> e || e _ .o. V -> i || i _ .o. V -> o || o _ .o. V -> u || u _ .o. V -> y || y _ .o. V -> ä || ä _ .o. V -> ö || ö _ ; # Vowel lengthening rule
 
 def Cons [b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|z|"'"];
@@ -102,7 +103,7 @@ def Gr 1:0 (P Cons [o|u|y|ö] 0:NOMSG) ([P Cons|P WeakCG] [o|u|y|ö] 0:n 0:GENSG
 	   # 17 VAPAA - ends in long vowel, so no CG, min. 2 syllables.
 	   17:0 2S(P LV 0:NOMSG) 2S(P LV 0:n 0:GENSG) 2S(P LV 0:PARTSG1) 2S(P LV 0:{tA} 0:PARTSG2) 2S(P LV 0:{seen} 0:ILLSG) 2S(P LV 0:t 0:NOMPL) 2S(P LV 0:GENPL1) 2S(P LV 0:{Xiden} 0:GENPL2) 2S(P LV 0:{Xitten} 0:GENPL3) 2S(P LV 0:PARTPL1) 2S(P LV 0:{Xita} 0:PARTPL2) 2S(P LV 0:{Xisiin} 0:ILLPL1) 2S(P LV 0:ILLPL2) 2S(P LV 0:ILLPL3) |
 	   # 18 - MAA - ends in VV, e.g. "sei", no CG
-       18:0 (P AllDouble 0:NOMSG) (P AllDouble 0:n 0:GENSG) (P AllDouble 0:PARTSG1) (P AllDouble 0:{tA} 0:PARTSG2) (P Vow [a:{ha}|e:{he}|i:{hi}|o:{ho}|u:{hu}|y:{hy}|ä:{hä}|ö:{hö}] 0:n 0:ILLSG) (P AllDouble 0:t 0:NOMPL) (P AllDouble 0:GENPL1) (P AllDouble 0:{Xiden} 0:GENPL2) (P AllDouble 0:{Xitten} 0:GENPL3) (P AllDouble 0:PARTPL1) (P AllDouble 0:{XitA} 0:PARTPL2) (P AllDouble 0:ILLPL1) (P AllDouble 0:{Xihin} 0:ILLPL2) (P AllDouble 0:ILLPL3) |
+       18:0 (P AllDouble 0:NOMSG) (P AllDouble 0:n 0:GENSG) (P AllDouble 0:PARTSG1) (P AllDouble 0:{tA} 0:PARTSG2) (P Vow  [a:{aha}|e:{ehe}|i:{ihi}|o:{oho}|u:{uhu}|y:{yhy}|ä:{ähä}|ö:{öhö}] 0:n 0:ILLSG) (P AllDouble 0:t 0:NOMPL) (P AllDouble 0:GENPL1) (P AllDouble 0:{Xiden} 0:GENPL2) (P AllDouble 0:{Xitten} 0:GENPL3) (P AllDouble 0:PARTPL1) (P AllDouble 0:{XitA} 0:PARTPL2) (P AllDouble 0:ILLPL1) (P AllDouble 0:{Xihin} 0:ILLPL2) (P AllDouble 0:ILLPL3) |
 	   # 19 - SUO - ends in VV (level diphthong [ie, uo, yö]) e.g. "työ", "tie", etc.  no CG
 	   19:0 (PS LDPTH 0:NOMSG) (PS LDPTH 0:n 0:GENSG) (PS LDPTH 0:PARTSG1) (PS [{ie}:{ietä}|{uo}:{uota}|{yö}:{yötä}] 0:PARTSG2) (PS [{ie}:{iehen}|{uo}:{uohon}|{yö}:{yöhön}] 0:ILLSG) (P LDPTH 0:t 0:NOMPL) (PS LDPTH 0:GENPL1) (PS [{ie}:{eiden}|{uo}:{oiden}|{yö}:{öiden}] 0:GENPL2) (PS [{ie}:{eitten}|{uo}:{oitten}|{yö}:{öitten}] 0:GENPL3) (PS LDPTH 0:PARTPL1) (PS [{ie}:{eitä}|{uo}:{oita}|{yö}:{öitä}] 0:PARTPL2) (PS LDPTH 0:ILLPL1) (PS [{ie}:{ei}|{uo}:{oi}|{yö}:{öi}] 0:{hin} 0:ILLPL2) (PS 0:ILLPL3) |
 	   # 20 FILEE - ends in long vowel, no CG
@@ -116,7 +117,7 @@ def Gr 1:0 (P Cons [o|u|y|ö] 0:NOMSG) ([P Cons|P WeakCG] [o|u|y|ö] 0:n 0:GENSG
 	   # 24 UNI - ends in [h|l|n|r|s] i, e.g. "hiili", "kusi", no CG
 	   24:0 (P [h|l|n|r|s] i 0:NOMSG) (P [h|l|n|r|s] i:{en} 0:GENSG) (P [h|l|n|r|s] i 0:PARTSG1) (P [h|l|n|r|s] i:{tA} 0:PARTSG2) (P [h|l|n|r|s] i:{een} 0:ILLSG) (P [h|l|n|r|s] i:{et} 0:NOMPL) (P [h|l|n|r|s] i 0:{en} 0:GENPL1) (P [h|l|n|r|s] i 0:GENPL2) (P [h|l|n|r|s] i:{ten} 0:GENPL3) (P [h|l|n|r|s] i 0:A 0:PARTPL1) (P [h|l|n|r|s] i 0:PARTPL2) (P [h|l|n|r|s] i 0:{in} 0:ILLPL1) (P [h|l|n|r|s] i 0:ILLPL2) (P [h|l|n|r|s] i 0:ILLPL3) |
 	   # 25 TOIMI - ends in -Vmi, e.g. "niemi", no CG
-	   25:0 (P Vow {mi} 0:NOMSG) (P Vow m i:{en} 0:GENSG) (P Vow m {i}:{eA} 0:PARTSG1) (P Vow {mi}:{ntA} 0:PARTSG2) (P Vow m i:{een} 0:ILLSG) (P Vow m i:{et} 0:NOMPL) (P Vow m i:{en} 0:GENPL1) (P Vow {mi} 0:GENPL2) (P Vow {mi}:{nten} 0:GENPL3) (P Vow {mi} 0:A 0:PARTPL1) (P Vow {mi} 0:PARTPL2) (P Vow {mi} 0:{in} 0:ILLPL1) (P Vow {mi} 0:ILLPL2) (P Vow {mi} 0:ILLPL3) |
+	   25:0 (P Vow {mi} 0:NOMSG) (P Vow m i:{en} 0:GENSG) (P Vow m {i}:{eA} 0:PARTSG1) (P Vow {mi}:{ntA} 0:PARTSG2) (P Vow m i:{een} 0:ILLSG) (P Vow m i:{et} 0:NOMPL) (P Vow m i 0:{en} 0:GENPL1) (P Vow {mi} 0:GENPL2) (P Vow {mi}:{nten} 0:GENPL3) (P Vow {mi} 0:A 0:PARTPL1) (P Vow {mi} 0:PARTPL2) (P Vow {mi} 0:{in} 0:ILLPL1) (P Vow {mi} 0:ILLPL2) (P Vow {mi} 0:ILLPL3) |
 	   # 26 PIENI - ends in [n|l|r] i, e.g. "saari", no CG. same as 24.
 	   26:0 (P [n|l|r] i 0:NOMSG) (P [n|l|r] i:{en} 0:GENSG) (P [n|l|r] i 0:PARTSG1) (P [n|l|r] i:{tA} 0:PARTSG2) (P [n|l|r] i:{een} 0:ILLSG) (P [n|l|r] i:{et} 0:NOMPL) (P [n|l|r] i 0:{en} 0:GENPL1) (P [n|l|r] i 0:GENPL2) (P [n|l|r] i:{ten} 0:GENPL3) (P [n|l|r] i 0:A 0:PARTPL1) (P [n|l|r] i 0:PARTPL2) (P [n|l|r] i 0:{in} 0:ILLPL1) (P [n|l|r] i 0:ILLPL2) (P [n|l|r] i 0:ILLPL3) |
 	   # 27 KÄSI - ends in -Vsi , e.g. "mesi", "kausi", no CG
@@ -130,7 +131,7 @@ def Gr 1:0 (P Cons [o|u|y|ö] 0:NOMSG) ([P Cons|P WeakCG] [o|u|y|ö] 0:n 0:GENSG
 	   # 31 KAKSI - ends in Vksi , "yksi" is also in this class. no CG.
 	   31:0 (PS [y|k a] {ksi} 0:NOMSG) (PS [y|k a] {ksi}:{hden} 0:GENSG) (PS [y|k a] {ksi} 0:PARTSG1) (PS [y|k a] {ksi}:{htA} 0:PARTSG2) (PS [y|k a] {ksi}:{hteen} 0:ILLSG) (PS [y|k a] {ksi}:{hdet} 0:NOMPL) (PS [y|k a] {ksi} 0:{en} 0:GENPL1) (PS [y|k a] {ksi} 0:GENPL2) (PS [y|k a] {ksi} 0:GENPL3) (PS [y|k a] {ksi} 0:A 0:PARTPL1) (PS [y|k a] {ksi} 0:PARTPL2) (PS [y|k a] {ksi} 0:{in} 0:ILLPL1) (PS [y|k a] {ksi} 0:ILLPL2) (PS [y|k a] {ksi} 0:ILLPL3) |
 	   # 32 SISAR - V[r|l|n] plus t ~ tt strengthening [kaunotar, tytär, ...]
-	   32:0 2S(PS Vow [r|l|n] 0:NOMSG) 2S(PS [?|t:{tt}] Vow [r|l|n] 0:{en} 0:GENSG) 2S(PS Vow [r|l|n] 0:PARTSG1) 2S(PS Vow [r|l|n] 0:{tA} 0:PARTSG2) 2S(PS Vow [?|t:{tt}] Vow [r|l|n] 0:{een} 0:ILLSG) (PS [?|t:{tt}] Vow [r|l|n] 0:{et} 0:NOMPL) (PS [?|t:{tt}] Vow [r|l|n] 0:{ien} 0:GENPL1) (PS Vow [r|l|n] 0:GENPL2) 2S(PS Vow [r|l|n] 0:{ten} 0:GENPL3) 2S(PS [?|t:{tt}] Vow [r|l|n] 0:{iA} 0:PARTPL1) 2S(PS Vow [r|l|n] 0:PARTPL2) 2S(PS [?|t:{tt}] Vow [r|l|n] 0:{iin} 0:ILLPL1) 2S(PS Vow [r|l|n] 0:ILLPL2) 2S(PS Vow [r|l|n] 0:ILLPL3) |
+	   32:0 2S(PS Vow [r|l|n] 0:NOMSG) 2S(PS [?|t:{tt}] Vow [r|l|n] 0:{en} 0:GENSG) 2S(PS Vow [r|l|n] 0:PARTSG1) 2S(PS Vow [r|l|n] 0:{tA} 0:PARTSG2) 2S(PS [?|t:{tt}] Vow [r|l|n] 0:{een} 0:ILLSG) (PS [?|t:{tt}] Vow [r|l|n] 0:{et} 0:NOMPL) (PS [?|t:{tt}] Vow [r|l|n] 0:{ien} 0:GENPL1) (PS Vow [r|l|n] 0:GENPL2) 2S(PS Vow [r|l|n] 0:{ten} 0:GENPL3) 2S(PS [?|t:{tt}] Vow [r|l|n] 0:{iA} 0:PARTPL1) 2S(PS Vow [r|l|n] 0:PARTPL2) 2S(PS [?|t:{tt}] Vow [r|l|n] 0:{iin} 0:ILLPL1) 2S(PS Vow [r|l|n] 0:ILLPL2) 2S(PS Vow [r|l|n] 0:ILLPL3) |
 	   # 33 KYTKIN - ends in -in, strengthening CG
 	   33:0 2S(P {in} 0:NOMSG) 2S([P|P StrCG] i n:{men} 0:GENSG) 2S(P {in} 0:PARTSG1) 2S(P {in} 0:{tA} 0:PARTSG2) 2S([P|StrCG] i n:{meen} 0:ILLSG) 2S([P|P StrCG] i n:{met} 0:NOMPL) ([P|P StrCG] i n:{mien} 0:GENPL1) (P {in} 0:GENPL2) (P {in} 0:{ten} 0:GENPL3) ([P|P StrCG] i n:{miA} 0:PARTPL1) (P {in} 0:PARTPL2) 2S([P|P StrCG] i n:{miin} 0:ILLPL1) 2S(P {in} 0:ILLPL2) 2S(P {in} 0:ILLPL3) |
 	   # 34 ONNETON - ends in -tOn, hence only t~tt CG.
@@ -148,7 +149,7 @@ def Gr 1:0 (P Cons [o|u|y|ö] 0:NOMSG) ([P Cons|P WeakCG] [o|u|y|ö] 0:n 0:GENSG
 	   # 40 KALLEUS - ends in -Vs, no CG
 	   40:0 (P Vow s 0:NOMSG) (P Vow s:{den} 0:GENSG) (P Vow s 0:PARTSG1) (P Vow s:{ttA} 0:PARTSG2) (P Vow s:{teen} 0:ILLSG) (P Vow s:{det} 0:NOMPL) (P Vow s:{ksien} 0:GENPL1) (P Vow s 0:GENPL2) (P Vow s 0:GENPL3) (P Vow s:{ksiA} 0:PARTPL1) (P Vow s 0:PARTPL2) (P Vow s:{ksiin} 0:ILLPL1) (P Vow s 0:ILLPL2) (P Vow s 0:ILLPL3) |
 	   # 41 VIERAS - ends in -Vs, str CG hidas~hitaan, lammas~lampaan, etc.
-	   41:0 (P Vow s 0:NOMSG) ([P|P StrCG] Vow s:{Vn} 0:GENSG) (P Vow s 0:PARTSG1) (P Vow s 0:{ta} 0:PARTSG2) ([P|P StrCG] Vow s:{Vseen} 0:ILLSG) ([P | P StrCG] Vow s:{Vt} 0:NOMPL) (P Vow s 0:GENPL1) ([P | P StrCG] Vow s:{iden} 0:GENPL2) ([P | P StrCG] Vow s:{itten} 0:GENPL3) (P Vow s 0:PARTPL1) ([P | P StrCG] Vow s:{itA} 0:PARTPL2) ([P | P StrCG] Vow s:{isiin} 0:ILLPL1) (P Vow s 0:ILLPL2) (P Vow s 0:ILLPL3) |
+	   41:0 (P Vow s 0:NOMSG) ([P|P StrCG] Vow s:{Vn} 0:GENSG) (P Vow s 0:PARTSG1) (P Vow s 0:{tA} 0:PARTSG2) ([P|P StrCG] Vow s:{Vseen} 0:ILLSG) ([P | P StrCG] Vow s:{Vt} 0:NOMPL) (P Vow s 0:GENPL1) ([P | P StrCG] Vow s:{iden} 0:GENPL2) ([P | P StrCG] Vow s:{itten} 0:GENPL3) (P Vow s 0:PARTPL1) ([P | P StrCG] Vow s:{itA} 0:PARTPL2) ([P | P StrCG] Vow s:{isiin} 0:ILLPL1) (P Vow s 0:ILLPL2) (P Vow s 0:ILLPL3) |
 	   # 42 MIES - essentially just this lexeme and compounds, no CG
 	   42:0 (PS {mies} 0:NOMSG) (PS {mie} s:{hen} 0:GENSG) (PS {mies} 0:PARTSG1) (PS {mies} 0:{tä} 0:PARTSG2) (PS {mie} s:{heen} 0:ILLSG) (PS {mie} s:{het} 0:NOMPL) (PS {mie} s:{hien} 0:GENPL1) (PS {mies} 0:GENPL2) (PS {mies} 0:{ten} 0:GENPL3) (PS {mie} s:{hiä} 0:PARTPL1) (PS {mies} 0:PARTPL2) (PS {mie} s:{hiin} 0:ILLPL1) (PS {mies} 0:ILLPL2) (PS {mies} 0:ILLPL3) |
 	   # 43 OHUT - ends in -ut/-yt, no CG
