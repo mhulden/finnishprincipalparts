@@ -68,6 +68,7 @@ valoNOMSG       9|valo
 ```
 
 **STEP 5**: Identify principal parts
+
 Run
 ```
 $ python3 find_prparts.py COMBINATIONS.out 
