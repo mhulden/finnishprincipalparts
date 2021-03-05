@@ -48,7 +48,7 @@ valoILLPL1valoihinILLPL2valoILLPL3
 ...
 ```
 
-**STEP 4: Perform foma lookup
+**STEP 4:** Perform foma lookup
 
 Run:
 ```
