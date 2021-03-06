@@ -41,8 +41,10 @@ if __name__=="__main__":
     inputs = reduce_sets(inputs)
     
     all_lem = set()
+    remaining_classes = set()
     paradigm_dict = defaultdict(set)
     for i, o in zip(inputs,outputs):
+        remaining_classes.add(o[0][0])
         lemma = o[0][1][0]
         all_lem.add(lemma)
         paradigm_dict[i].add(lemma)
@@ -63,3 +65,6 @@ if __name__=="__main__":
     print("MINIMAL PPARTS SET SIZE:",min_count)
     for forms in min_forms:
         print(forms)
+
+    print("MISSING CLASSES:")
+    print([i for i in range(1,49) if not i in remaining_classes])
